@@ -36,7 +36,7 @@ class Guia
 
     void cadastrar_guia(Guia Guias[], int &total_guias, int MAX_CADASTROS);
     void listar_guia(Guia Guias[], Cidade Cidades[], Pais Paises[], int total_guias);
-    void pesquisar_guia(Guia Guias[], int &total_guias);
+    void pesquisar_guia(Guia Guias[], Cidade Cidades[], Pais Paises[], int &total_guias);
 };
 
 #endif // GUIA_H

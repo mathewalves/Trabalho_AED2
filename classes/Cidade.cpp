@@ -27,6 +27,13 @@ void Cidade::setCodigoPais(int codigoPais_){
     this->codigoPais = codigoPais_;
 }
 
+string Cidade::getUf(){
+    return this->uf;
+}
+void Cidade::setUf(string uf_){
+    this->uf = uf_;
+}
+
 // methods
 
 void Cidade::cadastrar_cidade(Cidade Cidades[], Pais Paises[], int &total_cidades, int &total_paises, int MAX_CADASTROS) {
@@ -37,11 +44,12 @@ void Cidade::cadastrar_cidade(Cidade Cidades[], Pais Paises[], int &total_cidade
         return;
     }
 
-    string nome;
+    string nome, uf;
     int codigoPais;
     cout << "\nRegistrando nova [Cidade]: \n";
     cout << "Digite o nome para a cidade: "; cin >> nome;
-    cout << "Código do estado: "; cin >> codigoPais;
+    cout << "Digite a UF do estado: "; cin >> uf;
+    cout << "Código do País: "; cin >> codigoPais;
 
     int inicio = 0;
     int fim = total_paises - 1;
@@ -55,6 +63,7 @@ void Cidade::cadastrar_cidade(Cidade Cidades[], Pais Paises[], int &total_cidade
             // Elemento encontrado
             Cidades[total_cidades].setCodigo(total_cidades + 1);
             Cidades[total_cidades].setNome(nome);
+            Cidades[total_cidades].setUf(uf);
             Cidades[total_cidades].setCodigoPais(codigoPais);
             total_cidades++;
             busca = true;
@@ -83,7 +92,7 @@ void Cidade::listar_cidades(Cidade Cidades[], Pais Paises[], int total_cidades) 
     cout << "Código     |     Nome      |      País\n";
     for (int i = 0; i < total_cidades; i++) {
         codigoPais = Cidades[i].getCodigoPais();
-        cout << "[" << Cidades[i].getCodigo() << "]             " << Cidades[i].getNome() << "            " << Paises[codigoPais - 1].getUf() << endl;
+        cout << "[" << Cidades[i].getCodigo() << "]             " << Cidades[i].getNome() << "            " << Paises[codigoPais - 1].getNome() << endl;
     }
 
     cin.ignore();

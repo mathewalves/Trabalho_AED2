@@ -73,18 +73,19 @@ void Guia::cadastrar_guia(Guia Guias[], int &total_guias, int MAX_CADASTROS) {
 void Guia::listar_guia(Guia Guias[], Cidade Cidades[], Pais Paises[], int total_guias) {
     system("clear");
     int codigo_cidade, codigo_pais;
-    string cidade, pais;
+    string cidade, pais, uf;
 
     cout << "Listando todos os guias: \n";
     cout << "Código     |     Nome      |      Telefone      |      Endereço\n";
     for (int i = 0; i < total_guias; i++) {
         codigo_cidade = Guias[i].getCodigoCidade() - 1;
         cidade = Cidades[codigo_cidade].getNome();
+        uf = Cidades[codigo_cidade].getUf();
 
         codigo_pais = Cidades[codigo_cidade].getCodigoPais() - 1;
-        pais = Paises[codigo_pais].getUf();
+        pais = Paises[codigo_pais].getNome();
 
-        cout << "[" << Guias[i].getCodigo() << "]              " << Guias[i].getNome() << "             " << Guias[i].getTelefone() << "          " << Guias[i].getEndereco() << " " << cidade << " " << pais << endl;
+        cout << "[" << Guias[i].getCodigo() << "]              " << Guias[i].getNome() << "             " << Guias[i].getTelefone() << "          " << Guias[i].getEndereco() << " " << cidade << " " << uf << " " << pais << endl;
     }
     cin.ignore();
     cout << "\nAperte <Enter> para retornar ao menu anterior!\n";
@@ -93,49 +94,60 @@ void Guia::listar_guia(Guia Guias[], Cidade Cidades[], Pais Paises[], int total_
     system("clear");
 }
 
-// void Pais::pesquisar_pais(Pais Paises[], int &total_paises){
-//    system("clear");
-//     int codigo;
-//     cout << "Digite o código que você deseja buscar: "; cin >> codigo;
+void Guia::pesquisar_guia(Guia Guias[], Cidade Cidades[], Pais Paises[], int &total_guias){
+   system("clear");
+    int codigo;
+    cout << "Digite o código que você deseja buscar: "; cin >> codigo;
 
-//    system("clear");
+   system("clear");
 
-//     int inicio = 0;
-//     int fim = total_paises - 1;
-//     int meio;
-//     bool busca = false;
+    int inicio = 0;
+    int fim = total_guias - 1;
+    int meio;
+    bool busca = false;
 
-//     while (inicio <= fim) {
-//         meio = (inicio + fim) / 2;
+    int codigo_cidade, codigo_pais;
+    string cidade, pais, uf;
 
-//         if (codigo == Paises[meio].codigo) {
-//             // Elemento encontrado
-//             cout << "\n---------------------------------------------------" << endl;
-//             cout << "                   Busca Encontrada!                  " << endl;
-//             cout << "---------------------------------------------------" << endl;
-//             cout << " Código:         " << Paises[meio].getCodigo() << endl;
-//             cout << " Nome:           " << Paises[meio].getNome() << endl;
-//             cout << " UF:             " << Paises[meio].getUf() << endl;
-//             cout << "---------------------------------------------------" << endl;
-//             busca = true;
-//             break;
-//         } else if (codigo > Paises[meio].getCodigo()) {
-//             // Pesquisar na metade direita
-//             inicio = meio + 1;
-//         } else {
-//             // Pesquisar na metade esquerda
-//             fim = meio - 1;
-//         }
-//     }
+    while (inicio <= fim) {
+        meio = (inicio + fim) / 2;
+
+        if (codigo == Guias[meio].codigo) {
+            // Elemento encontrado
+            codigo_cidade = Guias[meio].getCodigoCidade() - 1;
+            cidade = Cidades[codigo_cidade].getNome();
+            uf = Cidades[codigo_cidade].getUf();
+
+            codigo_pais = Cidades[codigo_cidade].getCodigoPais() - 1;
+            pais = Paises[codigo_pais].getNome();
+
+            cout << "\n---------------------------------------------------" << endl;
+            cout << "                   Busca Encontrada!                  " << endl;
+            cout << "---------------------------------------------------" << endl;
+            cout << " Código:         " << Guias[meio].getCodigo() << endl;
+            cout << " Nome:           " << Guias[meio].getNome() << endl;
+            cout << " Telefone:             " << Guias[meio].getTelefone() << endl;
+            cout << " Endereco:             " << Guias[meio].getEndereco() << " " << cidade << " " << uf << " " << pais << endl;
+            cout << "---------------------------------------------------" << endl;
+            busca = true;
+            break;
+        } else if (codigo > Guias[meio].getCodigo()) {
+            // Pesquisar na metade direita
+            inicio = meio + 1;
+        } else {
+            // Pesquisar na metade esquerda
+            fim = meio - 1;
+        }
+    }
 
 
-//     if (!busca) {
-//         cout << "\nCódigo de Páis não encontrado!\n";
-//     }
+    if (!busca) {
+        cout << "\nCódigo de Páis não encontrado!\n";
+    }
 
-//     cin.ignore();
-//     cout << "\nAperte <Enter> para retornar ao menu anterior!\n";
-//     cin.get();
-//     system("clear");
-// }
+    cin.ignore();
+    cout << "\nAperte <Enter> para retornar ao menu anterior!\n";
+    cin.get();
+    system("clear");
+}
 

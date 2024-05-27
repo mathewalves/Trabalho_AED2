@@ -1,24 +1,21 @@
 #include "Sistema.h"
-#include "Cidade.h"
-#include "Pais.h"
-#include "Guia.h"
 #include "../style.h"
-#include <iostream>
-#include <string>
+
 using namespace std;
 
 // methods
 
-Sistema::Sistema(Pais Paises[], Cidade Cidades[], Guia Guias[], Cliente Clientes[], int MAX_CADASTROS){
+Sistema::Sistema(Pais Paises[], Cidade Cidades[], Guia Guias[], Cliente Clientes[], Pacote Pacotes[], int MAX_CADASTROS){
     int total_paises = 0;
     int total_cidades = 0;
     int total_guias = 0;
     int total_clientes = 0;
+    int total_pacotes = 0;
 
-    menu_principal(Paises, Cidades, Guias, Clientes, total_cidades, total_paises, total_guias, total_clientes, MAX_CADASTROS);
+    menu_principal(Paises, Cidades, Guias, Clientes, Pacotes, total_cidades, total_paises, total_guias, total_clientes, total_pacotes, MAX_CADASTROS);
 };
 
-void Sistema::menu_principal(Pais Paises[], Cidade Cidades[], Guia Guias[], Cliente Clientes[], int &total_cidades, int &total_paises, int &total_guias, int &total_clientes, int MAX_CADASTROS) {
+void Sistema::menu_principal(Pais Paises[], Cidade Cidades[], Guia Guias[], Cliente Clientes[], Pacote Pacotes[], int &total_cidades, int &total_paises, int &total_guias, int &total_clientes, int &total_pacotes, int MAX_CADASTROS) {
     char opcao = 'x';
     system("clear"); // limpa a tela no Linux
 
@@ -42,11 +39,11 @@ void Sistema::menu_principal(Pais Paises[], Cidade Cidades[], Guia Guias[], Clie
                 break;
             case '1':
                 system("clear");
-                menu_cadastro(Paises, Cidades, Guias, Clientes, total_cidades, total_paises, total_guias, total_clientes, MAX_CADASTROS);
+                menu_cadastro(Paises, Cidades, Guias, Clientes, Pacotes, total_cidades, total_paises, total_guias, total_clientes, total_pacotes, MAX_CADASTROS);
                 break;
             case '2':
                 system("clear");
-                menu_imprimir(Paises, Cidades, Guias, Clientes, total_cidades, total_paises, total_guias, total_clientes);
+                menu_imprimir(Paises, Cidades, Guias, Clientes, Pacotes, total_cidades, total_paises, total_guias, total_clientes, total_pacotes);
                 break;
             case '3':
                 system("clear");
@@ -64,7 +61,7 @@ void Sistema::menu_principal(Pais Paises[], Cidade Cidades[], Guia Guias[], Clie
     }
 }
 
-void Sistema::menu_imprimir(Pais Paises[], Cidade Cidades[], Guia Guias[], Cliente Clientes[], int &total_cidades, int &total_paises, int &total_guias, int &total_clientes){
+void Sistema::menu_imprimir(Pais Paises[], Cidade Cidades[], Guia Guias[], Cliente Clientes[], Pacote Pacotes[], int &total_cidades, int &total_paises, int &total_guias, int &total_clientes, int &total_pacotes){
     char opcao = 'x';
 
     system("clear");
@@ -73,7 +70,7 @@ void Sistema::menu_imprimir(Pais Paises[], Cidade Cidades[], Guia Guias[], Clien
         header_menu("Cadastro");
         cout << "\n\nOque você deseja Imprimir?\n";
         cout << "[1] País [2] Cidade [3] Guia [4] Clientes" << 
-        endl <<  "[0] Voltar" << 
+        endl <<  "[5] Pacote [0] Voltar" << 
         endl << "Escolha uma opção: "; 
         cin >> opcao;
         switch (opcao) {
@@ -91,6 +88,10 @@ void Sistema::menu_imprimir(Pais Paises[], Cidade Cidades[], Guia Guias[], Clien
                 break;
             case '4':
                 Clientes->listar_cliente(Clientes, Cidades, Paises, total_clientes);
+                break;
+            case '5':
+                Pacotes->listar_pacote(Pacotes, Guias, total_pacotes);
+                break;
             default:
                 system("clear");
                 cout << "### Opção Inválida! ###";
@@ -103,7 +104,7 @@ void Sistema::menu_imprimir(Pais Paises[], Cidade Cidades[], Guia Guias[], Clien
     } 
 }
 
-void Sistema::menu_cadastro(Pais Paises[], Cidade Cidades[], Guia Guias[], Cliente Clientes[], int &total_cidades, int &total_paises, int &total_guias, int &total_clientes, int MAX_CADASTROS) {
+void Sistema::menu_cadastro(Pais Paises[], Cidade Cidades[], Guia Guias[], Cliente Clientes[], Pacote Pacotes[], int &total_cidades, int &total_paises, int &total_guias, int &total_clientes, int &total_pacotes, int MAX_CADASTROS) {
    char opcao = 'x';
 
     system("clear");
@@ -112,7 +113,7 @@ void Sistema::menu_cadastro(Pais Paises[], Cidade Cidades[], Guia Guias[], Clien
         header_menu("Cadastro");
         cout << "\n\nOque você deseja cadastrar?\n";
         cout << "[1] País [2] Cidade [3] Guia [4] Cliente" << 
-        endl <<  "[0] Voltar" << 
+        endl <<  "[5] Pacote [0] Voltar" << 
         endl << "Escolha uma opção: "; 
         cin >> opcao;
         switch (opcao) {
@@ -131,6 +132,8 @@ void Sistema::menu_cadastro(Pais Paises[], Cidade Cidades[], Guia Guias[], Clien
             case '4':
                 cadastro_cliente(Clientes, total_clientes, MAX_CADASTROS);
                 break;
+            case '5':
+                cadastro_pacote(Pacotes, total_pacotes, MAX_CADASTROS);
             default:
                 system("clear");
                 cout << "### Opção Inválida! ###";
@@ -165,9 +168,12 @@ void Sistema::menu_pesquisa(Pais Paises[], Cidade Cidades[], Guia Guias[], Clien
             case '2':
                 Cidades->pesquisar_cidade(Cidades, Paises, total_cidades);
                 break;
+            case '3':
+                Guias->pesquisar_guia(Guias, Cidades, Paises, total_guias);
+                break;
             default:
-                system("clear");
                 cout << "### Opção Inválida! ###";
+                system("clear");
                 cin.ignore();
                 cout << "\nAperte <Enter> para retornar ao menu anterior!\n";
                 cin.get();
@@ -266,5 +272,24 @@ void Sistema::cadastro_cliente(Cliente Clientes[], int &total_clientes, int MAX_
     }
 }
 
+void Sistema::cadastro_pacote(Pacote Pacotes[], int &total_pacotes, int MAX_CADASTROS) {
+    char opcao = 'x';
+
+    system("clear");
+    Pacotes->cadastrar_pacote(Pacotes, total_pacotes, MAX_CADASTROS);
 
 
+     while (opcao != '0') {
+        pergunta("Deseja Cadastrar outro Pacote");
+        cout << "[1] Sim" << endl << "[0] Não" << endl;
+        cout << "Escolha uma opção: ";  
+        cin >> opcao;
+        switch (opcao) {
+            case '0':
+                system("clear");
+                break;
+            case '1':
+                Pacotes->cadastrar_pacote(Pacotes, total_pacotes, MAX_CADASTROS);
+        }
+    }
+}

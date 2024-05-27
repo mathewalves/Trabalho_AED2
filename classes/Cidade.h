@@ -10,6 +10,7 @@ class Cidade
     private:
         int codigo;
         string nome;
+        string uf;
         int codigoPais;
     public:
         int getCodigo();
@@ -17,6 +18,9 @@ class Cidade
 
         string getNome();
         void setNome(string nome_);
+
+        string getUf();
+        void setUf(string uf_);
 
         int getCodigoPais();
         void setCodigoPais(int codigoPais_);

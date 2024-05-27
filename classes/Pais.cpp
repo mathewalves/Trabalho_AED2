@@ -17,13 +17,6 @@ void Pais::setNome(string nome_){
     this->nome = nome_;
 }
 
-string Pais::getUf(){
-    return this->uf;
-}
-void Pais::setUf(string uf_){
-    this->uf = uf_;
-}
-
 // methods
 
 void Pais::cadastrar_pais(Pais Paises[], int &total_paises, int MAX_PAISES) {
@@ -34,15 +27,13 @@ void Pais::cadastrar_pais(Pais Paises[], int &total_paises, int MAX_PAISES) {
         return;
     }
 
-    string nome; string uf;
+    string nome;
     cout << "\nRegistrando Novo País: \n";
-    cout << "Digite o nome para o país: "; cin >> nome;
-    cout << "Digite a UF do país: "; cin >> uf;
-
+    cin.ignore();
+    cout << "Digite o nome para o país: "; getline(cin, nome);
 
     Paises[total_paises].setCodigo(total_paises + 1); // define o código
     Paises[total_paises].setNome(nome);
-    Paises[total_paises].setUf(uf);
     total_paises++;
 
     system("clear");
@@ -52,9 +43,9 @@ void Pais::listar_paises(Pais Paises[], int total_paises) {
     system("clear");
 
     cout << "Listando todos os países: \n";
-    cout << "Código     |     UF      |      Nome\n";
+    cout << "Código     |     Nome     \n";
     for (int i = 0; i < total_paises; i++) {
-        cout << "[" << Paises[i].getCodigo() << "]              " << Paises[i].getUf() << "             " << Paises[i].getNome() << endl;
+        cout << "[" << Paises[i].getCodigo() << "]              " << Paises[i].getNome();
     }
     cin.ignore();
     cout << "\nAperte <Enter> para retornar ao menu anterior!\n";
@@ -85,7 +76,6 @@ void Pais::pesquisar_pais(Pais Paises[], int &total_paises){
             cout << "---------------------------------------------------" << endl;
             cout << " Código:         " << Paises[meio].getCodigo() << endl;
             cout << " Nome:           " << Paises[meio].getNome() << endl;
-            cout << " UF:             " << Paises[meio].getUf() << endl;
             cout << "---------------------------------------------------" << endl;
             busca = true;
             break;

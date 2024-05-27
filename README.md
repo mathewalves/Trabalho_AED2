@@ -15,13 +15,13 @@ O objetivo deste trabalho é criar um programa para simular arquivos sequenciais
 
 ## Funcionalidades Implementadas
 
-1. Leitura dos dados das estruturas: Países, Cidades, Guias, Clientes.
-2. Inclusão de novos registros na tabela de Guias.
-   - Garantia de que o código do guia a ser inserido não existe na tabela de Guias.
-   - Busca automática do código da cidade na tabela de Cidades e exibição das informações relacionadas.
-3. Inclusão de novos registros na tabela de Clientes.
-   - Garantia de que o CPF do cliente a ser inserido não existe na tabela de clientes.
-   - Busca automática do código da cidade na tabela de Cidades e exibição das informações relacionadas.
+1. Leitura dos dados das estruturas: Países, Cidades, Guias, Clientes. :white_check_mark:
+2. Inclusão de novos registros na tabela de Guias. :white_check_mark:
+   - Garantia de que o código do guia a ser inserido não existe na tabela de Guias. :white_check_mark:
+   - Busca automática do código da cidade na tabela de Cidades e exibição das informações relacionadas. :white_check_mark:
+3. Inclusão de novos registros na tabela de Clientes. :white_check_mark:
+   - Garantia de que o CPF do cliente a ser inserido não existe na tabela de clientes. :white_check_mark:
+   - Busca automática do código da cidade na tabela de Cidades e exibição das informações relacionadas. :white_check_mark:
 4. Exclusão de registros na tabela de Clientes.
 5. Inclusão de novos registros na tabela de Pacotes.
    - Busca automática do código do guia na tabela de Guias e exibição das informações relacionadas.
