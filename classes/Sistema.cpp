@@ -5,26 +5,27 @@ using namespace std;
 
 // methods
 
-Sistema::Sistema(Pais Paises[], Cidade Cidades[], Guia Guias[], Cliente Clientes[], Pacote Pacotes[], int MAX_CADASTROS){
+Sistema::Sistema(Pais Paises[], Cidade Cidades[], Guia Guias[], Cliente Clientes[], Pacote Pacotes[], Venda Vendas[], int MAX_CADASTROS){
     int total_paises = 0;
     int total_cidades = 0;
     int total_guias = 0;
     int total_clientes = 0;
     int total_pacotes = 0;
+    int total_vendas = 0;
 
-    menu_principal(Paises, Cidades, Guias, Clientes, Pacotes, total_cidades, total_paises, total_guias, total_clientes, total_pacotes, MAX_CADASTROS);
+    menu_principal(Paises, Cidades, Guias, Clientes, Pacotes, Vendas, total_cidades, total_paises, total_guias, total_clientes, total_pacotes, total_vendas, MAX_CADASTROS);
 };
 
-void Sistema::menu_principal(Pais Paises[], Cidade Cidades[], Guia Guias[], Cliente Clientes[], Pacote Pacotes[], int &total_cidades, int &total_paises, int &total_guias, int &total_clientes, int &total_pacotes, int MAX_CADASTROS) {
+void Sistema::menu_principal(Pais Paises[], Cidade Cidades[], Guia Guias[], Cliente Clientes[], Pacote Pacotes[], Venda Vendas[], int &total_cidades, int &total_paises, int &total_guias, int &total_clientes, int &total_pacotes, int &total_vendas, int MAX_CADASTROS) {
     char opcao = 'x';
     system("clear"); // limpa a tela no Linux
-
+    
     while (opcao != '0') {
         header_menu("Menu Principal");
         cout << "\nSelecione uma das Opções:" << endl;
         cout << "------------------------------------" << endl;
         cout << "[1] Cadastros  [2] Imprimir" << endl;
-        cout << "[3] Pesquisar" << endl;
+        cout << "[3] Pesquisar [4] PDV" << endl;
         cout << "[0] Sair" << endl;
         cout << "------------------------------------" << endl;
         cout << "Escolha um opção: ";
@@ -48,6 +49,11 @@ void Sistema::menu_principal(Pais Paises[], Cidade Cidades[], Guia Guias[], Clie
             case '3':
                 system("clear");
                 menu_pesquisa(Paises, Cidades, Guias, Clientes, total_cidades, total_paises, total_guias, total_clientes, MAX_CADASTROS);
+                break;
+            case '4':
+                system("clear");
+                menu_pdv(Vendas, Clientes, Pacotes, total_vendas, total_clientes, total_pacotes, MAX_CADASTROS);
+                break;
             default:
                 system("clear");
                 cout << "### Opção Inválida! ###";
@@ -59,6 +65,39 @@ void Sistema::menu_principal(Pais Paises[], Cidade Cidades[], Guia Guias[], Clie
         }
         cout << endl << endl;
     }
+}
+
+void Sistema::menu_pdv(Venda Vendas[], Cliente Clientes[], Pacote Pacotes[], int &total_vendas, int &total_clientes, int &total_pacotes, int MAX_CADASTROS){
+    char opcao = 'x';
+
+    system("clear");
+
+    while (opcao != '0') {
+        header_menu("PDV");
+        cout << "\n\nOque você deseja Fazer?\n";
+        cout << "[1] Nova Venda [2] Listar Vendas [0] Voltar" <<
+        endl << "Escolha uma opção: "; 
+        cin >> opcao;
+        switch (opcao) {
+            case '0':
+                system("clear");
+                break;
+            case '1':
+                Vendas->fazer_venda(Vendas, Clientes, Pacotes, total_vendas, total_clientes, total_pacotes, MAX_CADASTROS);
+                break;
+            case '2':
+                Vendas->listar_venda(Vendas, Clientes, Pacotes, total_vendas, total_clientes, total_pacotes);
+                break;
+            default:
+                system("clear");
+                cout << "### Opção Inválida! ###";
+                cin.ignore();
+                cout << "\nAperte <Enter> para retornar ao menu anterior!\n";
+                cin.get();
+                system("clear");
+                break;
+        }
+    } 
 }
 
 void Sistema::menu_imprimir(Pais Paises[], Cidade Cidades[], Guia Guias[], Cliente Clientes[], Pacote Pacotes[], int &total_cidades, int &total_paises, int &total_guias, int &total_clientes, int &total_pacotes){
@@ -121,19 +160,19 @@ void Sistema::menu_cadastro(Pais Paises[], Cidade Cidades[], Guia Guias[], Clien
                 system("clear");
                 break;
             case '1':
-                cadastro_pais(Paises, total_paises, MAX_CADASTROS);
+                this->cadastro_pais(Paises, total_paises, MAX_CADASTROS);
                 break;
             case '2':
-                cadastro_cidade(Paises, Cidades,total_paises , total_cidades, MAX_CADASTROS);
+                this->cadastro_cidade(Paises, Cidades,total_paises , total_cidades, MAX_CADASTROS);
                 break;
             case '3':
-                cadastro_guia(Guias, total_guias, MAX_CADASTROS);
+                this->cadastro_guia(Guias, total_guias, MAX_CADASTROS);
                 break;
             case '4':
-                cadastro_cliente(Clientes, total_clientes, MAX_CADASTROS);
+                this->cadastro_cliente(Clientes, total_clientes, MAX_CADASTROS);
                 break;
             case '5':
-                cadastro_pacote(Pacotes, total_pacotes, MAX_CADASTROS);
+                this->cadastro_pacote(Pacotes, total_pacotes, MAX_CADASTROS);
             default:
                 system("clear");
                 cout << "### Opção Inválida! ###";

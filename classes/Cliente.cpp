@@ -3,10 +3,10 @@
 #include <string>
 using namespace std;
 
-string Cliente::getCPF(){
+long int Cliente::getCPF(){
     return this->cpf;
 }
-void Cliente::setCPF(string cpf_){
+void Cliente::setCPF(long int cpf_){
     this->cpf = cpf_;
 }
 
@@ -42,9 +42,10 @@ void Cliente::cadastrar_cliente(Cliente Clientes[], int &total_clientes, int MAX
     }
 
     int codigo_cidade;
-    string nome, endereco, cpf;
+    string nome, endereco;
+    long int cpf;
     cout << "\nRegistrando Novo Cliente: \n";
-    cout << "Digite o nome: "; cin >> nome;
+    cout << "Digite o nome: "; cin.ignore(); getline(cin, nome);
     cout << "Digite o CPF (Somente Números): "; cin >> cpf;
 
     cin.ignore();
@@ -84,7 +85,7 @@ void Cliente::listar_cliente(Cliente Clientes[], Cidade Cidades[], Pais Paises[]
 
 
     cout << "Listando todos os clientes: \n";
-    cout << "CPF        |     Nome      |      Endereço\n";
+    cout << "CPF             |       Nome        |      Endereço\n";
     for (int i = 0; i < total_clientes; i++) {
         codigo_cidade = Clientes[i].getCodigoCidade();
         cidade = Cidades[codigo_cidade].getNome();
@@ -93,7 +94,7 @@ void Cliente::listar_cliente(Cliente Clientes[], Cidade Cidades[], Pais Paises[]
         codigo_pais = Cidades[codigo_cidade].getCodigoPais() - 1;
         pais = Paises[codigo_pais].getNome();
 
-        cout << " " << Clientes[i].getCPF() << "              " << Clientes[i].getNome() << "             " << Clientes[i].getEndereco() << " " << cidade << " " << uf << " " << pais << endl;
+        cout << " " << Clientes[i].getCPF() << "          " << Clientes[i].getNome() << "       " << Clientes[i].getEndereco() << " " << cidade << " " << uf << " " << pais << endl;
     }
     cin.ignore();
     cout << "\nAperte <Enter> para retornar ao menu anterior!\n";
@@ -104,7 +105,7 @@ void Cliente::listar_cliente(Cliente Clientes[], Cidade Cidades[], Pais Paises[]
 
 void Cliente::pesquisar_cliente(Cliente Clientes[], Cidade Cidades[], Pais Paises[], int &total_clientes){
    system("clear");
-    string codigo;
+    long int codigo;
     cout << "Digite o cpf que você deseja buscar: "; cin >> codigo;
 
    system("clear");

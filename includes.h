@@ -8,5 +8,6 @@
 #include "classes/Cidade.h"
 #include "classes/Guia.h"
 #include "classes/Cliente.h"
+#include "classes/Venda.h"
 
 using namespace std;

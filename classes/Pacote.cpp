@@ -15,7 +15,7 @@ int Pacote::getQuantMaxParticipantes(){
     return this->quant_max_participantes;
 }
 void Pacote::setQuantMaxParticipantes(int quant_max_participantes_){
-    this->quant_max_participantes = quant_max_participantes;
+    this->quant_max_participantes = quant_max_participantes_;
 }
 
 int Pacote::getTotalParticipantes(){
@@ -29,7 +29,7 @@ float Pacote::getValorPorPessoa(){
     return this->valor_por_pessoa;
 }
 void Pacote::setValorPorPessoa(float valor_por_pessoa_){
-    this->valor_por_pessoa = valor_por_pessoa;
+    this->valor_por_pessoa = valor_por_pessoa_;
 }
 
 string Pacote::getDescricao(){
@@ -81,19 +81,24 @@ void Pacote::cadastrar_pacote(Pacote Pacotes[], int &total_pacotes, int MAX_CADA
 }
 
 void Pacote::listar_pacote(Pacote Pacotes[], Guia Guias[], int total_pacotes) {
-    system("clear");
-    int codigo_guia;
+     system("clear");
+    int codigo, codigo_guia, quant_max_participantes, total_participantes;
+    float valor_por_pessoa;
     string guia;
 
     cout << "Listando todos pacotes:";
     for (int i = 0; i < total_pacotes; i++) {
+        codigo = Pacotes[i].getCodigo();
+        total_participantes = Pacotes[i].getTotalParticipantes();
+        quant_max_participantes = Pacotes[i].getQuantMaxParticipantes();
+        valor_por_pessoa = Pacotes[i].getValorPorPessoa();
         codigo_guia = Pacotes[i].getCodigoGuia() - 1;
         guia = Guias[codigo_guia].getNome();
 
-        cout << "Código: [" << Pacotes[i].getCodigo() << "]";
-        cout << "Total/Qtde Máxima de participantes: " << Pacotes[i].getTotalParticipantes() << "/" << Pacotes[i].getQuantMaxParticipantes();
-        cout << "Valor por Pessoa: R$ " << Pacotes[i].getValorPorPessoa();
-        cout << "Descrição: " << Pacotes[i].getDescricao();
+        cout << endl << "Código: [" << codigo << "]" << endl;
+        cout << "Total/Qtde Máxima de participantes: " << total_participantes << "/" << quant_max_participantes << endl;
+        cout << "Valor por Pessoa: R$ " << valor_por_pessoa << endl;
+        cout << "Descrição: " << Pacotes[i].getDescricao() << endl;
         cout << "Guia: " << guia;
         cout << "\n"; 
     }

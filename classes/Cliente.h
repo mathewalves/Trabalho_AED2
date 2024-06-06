@@ -10,13 +10,13 @@ using namespace std;
 class Cliente
 {
     private:
-        string cpf;
+        long int cpf;
         string nome;
         string endereco;
         int codigo_cidade;
     public:
-        string getCPF();
-        void setCPF(string cpf_);
+        long int getCPF();
+        void setCPF(long int cpf_);
 
         string getNome();
         void setNome(string nome_);

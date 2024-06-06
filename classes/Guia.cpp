@@ -51,9 +51,8 @@ void Guia::cadastrar_guia(Guia Guias[], int &total_guias, int MAX_CADASTROS) {
 
     string nome, endereco, telefone;
     int codigo_cidade;
-    
-    cout << "Digite o nome para o Guia: "; cin >> nome;
-    cout << "Digite o endereço: "; cin >> endereco;
+    cout << "Digite o nome para o Guia: "; cin.ignore(); getline(cin, nome);
+    cout << "Digite o endereço: "; getline(cin, endereco);
     cout << "Digite o telefone: "; cin >> telefone;
     cout << "Digite o código da cidade: "; cin >> codigo_cidade;
 
@@ -76,7 +75,7 @@ void Guia::listar_guia(Guia Guias[], Cidade Cidades[], Pais Paises[], int total_
     string cidade, pais, uf;
 
     cout << "Listando todos os guias: \n";
-    cout << "Código     |     Nome      |      Telefone      |      Endereço\n";
+    cout << "Código     |     Nome      |         Telefone         |      Endereço\n";
     for (int i = 0; i < total_guias; i++) {
         codigo_cidade = Guias[i].getCodigoCidade() - 1;
         cidade = Cidades[codigo_cidade].getNome();
@@ -85,7 +84,7 @@ void Guia::listar_guia(Guia Guias[], Cidade Cidades[], Pais Paises[], int total_
         codigo_pais = Cidades[codigo_cidade].getCodigoPais() - 1;
         pais = Paises[codigo_pais].getNome();
 
-        cout << "[" << Guias[i].getCodigo() << "]              " << Guias[i].getNome() << "             " << Guias[i].getTelefone() << "          " << Guias[i].getEndereco() << " " << cidade << " " << uf << " " << pais << endl;
+        cout << "[" << Guias[i].getCodigo() << "]           " << Guias[i].getNome() << "        " << Guias[i].getTelefone() << "       " << Guias[i].getEndereco() << " " << cidade << " " << uf << " " << pais << endl;
     }
     cin.ignore();
     cout << "\nAperte <Enter> para retornar ao menu anterior!\n";
