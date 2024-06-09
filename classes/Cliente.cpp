@@ -46,14 +46,14 @@ void Cliente::cadastrar_cliente(Cliente Clientes[], int &total_clientes, int MAX
     long int cpf;
     cout << "\nRegistrando Novo Cliente: \n";
     cout << "Digite o nome: "; cin.ignore(); getline(cin, nome);
-    cout << "Digite o CPF (Somente Números): "; cin >> cpf;
+    cout << endl << "Digite o CPF (Somente Números): "; cin >> cpf;
 
     cin.ignore();
     cout << "Digite o endereço: "; getline(cin, endereco);
 
     cout << "Digite o código da cidade: "; cin >> codigo_cidade;
 
-    int fim = total_clientes - 1;
+    int fim = total_clientes;
     bool busca = false;
 
     for (int i = 0; i < fim; i++)
@@ -110,7 +110,7 @@ void Cliente::pesquisar_cliente(Cliente Clientes[], Cidade Cidades[], Pais Paise
 
    system("clear");
 
-    int fim = total_clientes - 1;
+    int fim = total_clientes;
     bool busca = false;
 
     for (int i = 0; i < fim; i++)
@@ -124,6 +124,17 @@ void Cliente::pesquisar_cliente(Cliente Clientes[], Cidade Cidades[], Pais Paise
             cout << " Nome:           " << Clientes[i].getNome() << endl;
             cout << "---------------------------------------------------" << endl;
             busca = true;
+            cout << "\nDeseja excluir o cliente " << Clientes[i].getNome() << "?" << endl;
+            cout << "[1] SIM [2]NÃO" << endl;
+            int escolha; cin >> escolha;
+            if(escolha == 1){
+                for (int j = i; j < total_clientes; j++)
+                {
+                    Clientes[j] = Clientes[j + 1];
+                }
+                cout << "Cliente " << Clientes[i].getNome() << " Excluído com sucesso!\n";
+                total_clientes--;
+            }
         }
     }
 
@@ -136,4 +147,3 @@ void Cliente::pesquisar_cliente(Cliente Clientes[], Cidade Cidades[], Pais Paise
     cin.get();
     system("clear");
 }
-

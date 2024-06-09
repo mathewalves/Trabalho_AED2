@@ -109,7 +109,7 @@ void Sistema::menu_imprimir(Pais Paises[], Cidade Cidades[], Guia Guias[], Clien
         header_menu("Cadastro");
         cout << "\n\nOque você deseja Imprimir?\n";
         cout << "[1] País [2] Cidade [3] Guia [4] Clientes" << 
-        endl <<  "[5] Pacote [0] Voltar" << 
+        endl <<  "[5] Pacote [6] Pacotes Vendidos [0] Voltar" << 
         endl << "Escolha uma opção: "; 
         cin >> opcao;
         switch (opcao) {
@@ -130,6 +130,9 @@ void Sistema::menu_imprimir(Pais Paises[], Cidade Cidades[], Guia Guias[], Clien
                 break;
             case '5':
                 Pacotes->listar_pacote(Pacotes, Guias, total_pacotes);
+                break;
+            case '6':
+                Pacotes->listar_pacote_vendido(Pacotes, Guias, total_pacotes);
                 break;
             default:
                 system("clear");
@@ -173,6 +176,7 @@ void Sistema::menu_cadastro(Pais Paises[], Cidade Cidades[], Guia Guias[], Clien
                 break;
             case '5':
                 this->cadastro_pacote(Pacotes, total_pacotes, MAX_CADASTROS);
+                break;
             default:
                 system("clear");
                 cout << "### Opção Inválida! ###";
@@ -210,6 +214,9 @@ void Sistema::menu_pesquisa(Pais Paises[], Cidade Cidades[], Guia Guias[], Clien
             case '3':
                 Guias->pesquisar_guia(Guias, Cidades, Paises, total_guias);
                 break;
+            case '4':
+                Clientes->pesquisar_cliente(Clientes, Cidades, Paises, total_clientes);
+                break;
             default:
                 cout << "### Opção Inválida! ###";
                 system("clear");
@@ -241,6 +248,7 @@ void Sistema::cadastro_cidade(Pais Paises[], Cidade Cidades[], int &total_paises
                 break;
             case '1':
                 Cidades->cadastrar_cidade(Cidades, Paises, total_cidades, total_paises, MAX_CADASTROS);
+                break;
         }
     }
 }
@@ -263,6 +271,7 @@ void Sistema::cadastro_pais(Pais Paises[], int &total_paises, int MAX_CADASTROS)
                 break;
             case '1':
                 Paises->cadastrar_pais(Paises, total_paises, MAX_CADASTROS);
+                break;
         }
     }
 }
@@ -285,6 +294,7 @@ void Sistema::cadastro_guia(Guia Guias[], int &total_guias, int MAX_CADASTROS) {
                 break;
             case '1':
                 Guias->cadastrar_guia(Guias, total_guias, MAX_CADASTROS);
+                break;
         }
     }
 }
@@ -307,6 +317,7 @@ void Sistema::cadastro_cliente(Cliente Clientes[], int &total_clientes, int MAX_
                 break;
             case '1':
                 Clientes->cadastrar_cliente(Clientes, total_clientes, MAX_CADASTROS);
+                break;
         }
     }
 }
@@ -316,7 +327,6 @@ void Sistema::cadastro_pacote(Pacote Pacotes[], int &total_pacotes, int MAX_CADA
 
     system("clear");
     Pacotes->cadastrar_pacote(Pacotes, total_pacotes, MAX_CADASTROS);
-
 
      while (opcao != '0') {
         pergunta("Deseja Cadastrar outro Pacote");
@@ -329,6 +339,7 @@ void Sistema::cadastro_pacote(Pacote Pacotes[], int &total_pacotes, int MAX_CADA
                 break;
             case '1':
                 Pacotes->cadastrar_pacote(Pacotes, total_pacotes, MAX_CADASTROS);
+                break;
         }
     }
 }

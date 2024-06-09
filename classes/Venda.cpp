@@ -52,6 +52,12 @@ void Venda::fazer_venda(Venda Vendas[], Cliente Clientes[], Pacote Pacotes[], in
     bool busca_cpf = false;
     bool busca_pacote = false;
 
+    if (Pacotes[codigo_pacote - 1].getTotalParticipantes() >= Pacotes[codigo_pacote -1].getQuantMaxParticipantes())
+    {
+        cout << "\nNúmero máximo de vendas para esse pacote foi alcançado!";
+        return;
+    }
+    
     for (int i = 0; i < total_clientes; i++){
         if(Clientes[i].getCPF() == cpf){
             cout << "\nCPF Encontrado!" << endl;
@@ -95,12 +101,16 @@ void Venda::fazer_venda(Venda Vendas[], Cliente Clientes[], Pacote Pacotes[], in
         cin.get();
     }
     
-    if (busca_cpf = true; busca_pacote = true){
+    if (busca_cpf == true && busca_pacote == true){
         Vendas[total_vendas].setCodigo(total_vendas + 1);
         Vendas[total_vendas].setValorTotal(valor_total);
         int total_participantes;
+
         total_participantes = Pacotes[codigo_pacote - 1].getTotalParticipantes();
+        cout << total_participantes;
         Pacotes[codigo_pacote - 1].setTotalParticipantes(total_participantes + 1);
+        cout << codigo_pacote - 1;
+        cout << Pacotes[codigo_pacote - 1].getTotalParticipantes();
         total_vendas++;
 
         cout << endl << "Venda Finalizada com sucesso" << endl;

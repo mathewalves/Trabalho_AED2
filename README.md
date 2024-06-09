@@ -22,18 +22,18 @@ O objetivo deste trabalho é criar um programa para simular arquivos sequenciais
 3. :white_check_mark:Inclusão de novos registros na tabela de Clientes.
    - :white_check_mark:Garantia de que o CPF do cliente a ser inserido não existe na tabela de clientes.
    - :white_check_mark:Busca automática do código da cidade na tabela de Cidades e exibição das informações relacionadas.
-4. Exclusão de registros na tabela de Clientes.
+4. :white_check_mark:Exclusão de registros na tabela de Clientes.
 5. :white_check_mark:Inclusão de novos registros na tabela de Pacotes. 
    - :white_check_mark:Busca automática do código do guia na tabela de Guias e exibição das informações relacionadas.
 6. :white_check_mark:Inclusão de novos registros na tabela de Vendas.
    - :white_check_mark:Busca automática do CPF do cliente na tabela de Clientes e exibição das informações relacionadas.
-   - Busca automática do código do pacote na tabela de Pacotes e exibição das informações relacionadas.
-   - Adição da quantidade de pessoas ao total de participantes do pacote.
-   - Cálculo e exibição do valor total da venda.
-7. Consulta dos dados de determinado pacote.
+   - :white_check_mark:Busca automática do código do pacote na tabela de Pacotes e exibição das informações relacionadas.
+   - :white_check_mark:Adição da quantidade de pessoas ao total de participantes do pacote.
+   - :white_check_mark:Cálculo e exibição do valor total da venda.
+7. :white_check_mark:Consulta dos dados de determinado pacote.
    - Exibição de todos os dados do pacote e do valor total arrecadado pelo pacote.
-8. Exibição de todos os registros da tabela de Pacotes que tenham sido completamente vendidos.
-   - Exibição do código, descrição, nome do guia e valor total arrecadado pelo pacote.
+8. :white_check_mark:Exibição de todos os registros da tabela de Pacotes que tenham sido completamente vendidos.
+   - :white_check_mark:Exibição do código, descrição, nome do guia e valor total arrecadado pelo pacote.
 9. :white_check_mark: Exibição de todos os registros da tabela de Vendas.
    - :white_check_mark:Exibição do código, nome do cliente, descrição do pacote, quantidade de pessoas e valor total da venda.
    - :white_check_mark:Exibição do valor total vendido.
@@ -41,7 +41,7 @@ O objetivo deste trabalho é criar um programa para simular arquivos sequenciais
 ## Observações
 
 - Não foram utilizadas variáveis globais.
-- Todas as funções são acessadas através de um menu de opções chamado a partir da função main().
+- Todas as funções são acessadas através da classe Sistema apartir de um menu de opções chamado a partir da função main().
 
 ## Data de Entrega
 

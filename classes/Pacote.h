@@ -38,6 +38,7 @@ class Pacote
 
     void cadastrar_pacote(Pacote Pacotes[], int &total_pacotes, int MAX_CADASTROS);
     void listar_pacote(Pacote Pacotes[], Guia Guias[], int total_pacotes);
+    void listar_pacote_vendido(Pacote Pacotes[], Guia Guias[], int total_pacotes);
 };
 
 #endif // PACOTES_H
