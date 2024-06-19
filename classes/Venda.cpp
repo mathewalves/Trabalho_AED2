@@ -108,7 +108,7 @@ void Venda::fazer_venda(Venda Vendas[], Cliente Clientes[], Pacote Pacotes[], in
 
         total_participantes = Pacotes[codigo_pacote - 1].getTotalParticipantes();
         cout << total_participantes;
-        Pacotes[codigo_pacote - 1].setTotalParticipantes(total_participantes + 1);
+        Pacotes[codigo_pacote - 1].setTotalParticipantes(total_participantes + valor_total);
         cout << codigo_pacote - 1;
         cout << Pacotes[codigo_pacote - 1].getTotalParticipantes();
         total_vendas++;

@@ -45,7 +45,7 @@ void Pais::listar_paises(Pais Paises[], int total_paises) {
     cout << "Listando todos os países: \n";
     cout << "Código     |     Nome     \n";
     for (int i = 0; i < total_paises; i++) {
-        cout << "[" << Paises[i].getCodigo() << "]              " << Paises[i].getNome();
+        cout << "[" << Paises[i].getCodigo() << "]              " << Paises[i].getNome() << endl;
     }
     cin.ignore();
     cout << "\nAperte <Enter> para retornar ao menu anterior!\n";
